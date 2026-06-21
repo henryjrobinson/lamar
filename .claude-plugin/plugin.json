@@ -1,0 +1,11 @@
+{
+  "name": "lamar",
+  "version": "0.1.0",
+  "description": "Adaptive-intake skill that turns a fuzzy wish into an autonomy-ready package (a Ralph prd.json) — designed to work with your thinking style.",
+  "author": {
+    "name": "Henry Robinson"
+  },
+  "homepage": "https://github.com/henryjrobinson/lamar",
+  "skills": "./skills/",
+  "keywords": ["lamar", "ralph", "prd", "intake", "spec", "automation", "agent", "planning"]
+}

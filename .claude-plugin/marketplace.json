@@ -1,0 +1,21 @@
+{
+  "name": "lamar-marketplace",
+  "owner": {
+    "name": "henryjrobinson"
+  },
+  "metadata": {
+    "description": "Lamar — an interview-driven spec tool that shapes the spec around how you think, then hands a build-ready prd.json to the Ralph autonomous runner.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "lamar",
+      "source": "./",
+      "description": "Adaptive-intake skill: fuzzy wish → autonomy-ready Ralph prd.json.",
+      "version": "0.1.0",
+      "keywords": ["lamar", "ralph", "prd", "intake", "spec", "automation", "agent", "planning"],
+      "category": "productivity",
+      "skills": "./skills/"
+    }
+  ]
+}

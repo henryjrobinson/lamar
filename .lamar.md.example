@@ -1,0 +1,28 @@
+---
+# .lamar.md — per-repo profile for the Lamar skill.
+# Copy to your repo root as `.lamar.md` and edit. All fields optional; defaults shown.
+# Lamar reads this on every invocation to adapt to THIS repo (see skills/lamar/references/package.md).
+
+floor: 0            # minimum tier: 0 (just-do-it) | 1 (light intake) | 2 (full treatment)
+org: solo           # solo | team  → how written-down the package needs to be
+data_class: none    # none | personal | customer  → raises rigor for sensitive data paths
+standards:          # skills/docs Lamar should apply as coding standards
+  - CLAUDE.md
+tests: optional     # optional | required-for-logic | required-all
+security_review: tier2   # never | tier2 | any-data-path
+
+# Where an autonomy-ready package runs once the gates are green.
+#   ralph (default) → emit a Ralph prd.json and hand off to the local snarktank/ralph
+#                     runner: `./ralph.sh --tool claude` (see README "Run it").
+#   or an object    → { name: <label>, command: <cmd> } for a self-hosted orchestrator
+#                     or cloud agent. The command receives the emitted package / prd.json.
+#                     Keep any URL/token in the command's OWN config, never in this file.
+execution_target: ralph
+
+doc_home: docs/     # where PRDs / hand-off docs live in this repo
+---
+
+# Notes for this repo (optional, free-form)
+# e.g. "Quality gate is `npm run check`. Migrations use drizzle. UI verified with the
+# dev-browser skill." Ralph reads the quality gate from CLAUDE.md / scripts/ralph/,
+# not from prd.json — state it there.

@@ -1,0 +1,51 @@
+{
+  "project": "TaskList",
+  "branchName": "ralph/task-list-pagination",
+  "description": "Paginate the task list — it currently loads every row at once and is getting slow. Page through results, 25 per page, newest first. Non-goals: no infinite scroll, no change to the row UI beyond the pager. Data class: none.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Add a paginated query for tasks (newest first)",
+      "description": "As a developer, I need the data layer to return one page of tasks so the page stops loading everything. Touch exactly: src/server/tasks/queries.ts. Add getTasksPage(page, pageSize=25) ordering by id DESC with LIMIT/OFFSET, plus getTaskCount() for total pages. Parameterize all query inputs.",
+      "acceptanceCriteria": [
+        "getTasksPage(2) returns rows 26-50 ordered by id descending",
+        "getTaskCount() returns the total row count",
+        "Inputs are parameterized (no string-concatenated SQL)",
+        "Tests pass",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Serve a page of tasks from the list endpoint",
+      "description": "As a user, I want the task list endpoint to accept a page param and return that page plus total page count. Touch exactly: src/server/tasks/list-handler.ts. Read ?page (default 1), call getTasksPage + getTaskCount, return { tasks, page, pageCount }.",
+      "acceptanceCriteria": [
+        "GET /tasks?page=2 returns the second page and a pageCount field",
+        "Missing or invalid page defaults to 1",
+        "Tests pass",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Add a pager control to the task list UI",
+      "description": "As a user, I want Prev/Next controls and a 'Page X of Y' label on the task list. Touch exactly: src/components/TaskList.tsx. Fetch the current page, render the pager, disable Prev on page 1 and Next on the last page.",
+      "acceptanceCriteria": [
+        "Pager shows 'Page X of Y' using pageCount from the endpoint",
+        "Prev disabled on page 1; Next disabled on the last page",
+        "Changing page fetches and renders that page without a full reload",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
