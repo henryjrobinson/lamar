@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lamar — designed to work with your thinking style</title>
+  <meta name="description" content="Lamar is an interview-driven spec tool. It shapes the spec around how you think, then hands a build-ready prd.json to the Ralph autonomous runner. They didn't teach Lamar to throw — they built a javelin for how he already threw.">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon-512.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png">
+  <meta property="og:title" content="Lamar — designed to work with your thinking style">
+  <meta property="og:description" content="Fuzzy idea in, built code out. Lamar shapes the spec around how you think, then hands it to Ralph to build.">
+  <meta property="og:image" content="assets/brand/repo-card-1280x640.png">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-panel">
+        <img src="assets/brand/hero-16x9-clean.png" alt="Comic illustration: a track athlete mid-leap having just thrown a javelin that bends into a wavy flight path, while baffled muscle-bound jocks look on.">
+      </div>
+      <div class="wordmark">Lamar</div>
+      <p class="tagline">Designed to work with your
+        <span class="fix"><span class="hw">thinking</span><span class="old">throwing</span></span> style.
+      </p>
+      <p class="lead">Describe what you want in messy, normal words. Lamar asks the right
+        questions, writes a build-ready spec, and hands it to a robot that builds it while
+        you walk away.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#install">Install Lamar</a>
+        <a class="btn btn-ghost" href="https://github.com/henryjrobinson/lamar">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== The story ===== -->
+  <section class="story">
+    <div class="wrap">
+      <span class="section-label">the origin story</span>
+      <div class="story-grid">
+        <div>
+          <h2>They didn't fix Lamar's throw.</h2>
+          <p class="lead">In <em>Revenge of the Nerds</em>, the nerds need to win the javelin
+            event. Lamar throws with a limp-wristed flick that no coach could straighten out.</p>
+          <p>So they don't straighten it out. Wormser — the aerodynamics guy — <strong>builds a
+            javelin around the throw Lamar already has</strong>. It leaves his hand, flaps down
+            the field like a startled bird, and lands past everyone.</p>
+          <blockquote class="pullquote">
+            "Wormser! It worked!"
+            <cite>— Revenge of the Nerds (1984)</cite>
+          </blockquote>
+          <p>That's the whole idea. Don't retrain the person. <strong>Engineer the tool around
+            how they already work.</strong></p>
+        </div>
+        <div>
+          <div class="video-panel">
+            <video src="assets/brand/promo-video.mp4" autoplay muted loop playsinline></video>
+          </div>
+          <span class="video-cap">…the throw, the javelin, the win.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Same move, for code ===== -->
+  <section>
+    <div class="wrap">
+      <span class="section-label">same move, for code</span>
+      <h2>You think in wishes. Robots build from specs.</h2>
+      <p class="lead">Most tools make <em>you</em> do the translating — sit down, learn the
+        format, write a tidy PRD. That's coaching your throw.</p>
+      <p>Lamar is the javelin. It sits between you and the build-it robot, takes your fuzzy
+        wish, and shapes it — by asking the right questions in <em>your</em> language — until
+        it means exactly what you meant. Then it writes the spec for you. You never have to
+        learn the format. The tool bends to your style, not the other way around.</p>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="story">
+    <div class="wrap">
+      <span class="section-label">how it works</span>
+      <h2>Fuzzy idea in. Built code out.</h2>
+      <div class="cards">
+        <div class="card">
+          <span class="num">1</span>
+          <h3>You describe it loosely</h3>
+          <p>"The list is slow, page through it, newest first." Lamar asks the questions a
+            builder would otherwise have to guess.</p>
+        </div>
+        <div class="card">
+          <span class="num">2</span>
+          <h3>Lamar writes the checklist</h3>
+          <p>It emits a <code>prd.json</code> — small, ordered, independently checkable steps.
+            A to-do list a robot can actually follow.</p>
+        </div>
+        <div class="card">
+          <span class="num">3</span>
+          <h3>Ralph builds it</h3>
+          <p>The <a href="https://github.com/snarktank/ralph">Ralph</a> runner does each step,
+            checks its own work, commits, ticks the box — until every box is ticked.</p>
+        </div>
+      </div>
+      <p class="flow">
+        fuzzy idea <span class="arrow">→</span> <code>/lamar</code>
+        <span class="arrow">→</span> <code>prd.json</code>
+        <span class="arrow">→</span> Ralph builds it
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Install ===== -->
+  <section class="install" id="install">
+    <div class="wrap">
+      <span class="section-label">get it</span>
+      <h2>Install &amp; run</h2>
+      <p>Lamar is a Claude Code plugin. Add the marketplace, install it, and start any
+        non-trivial build with <code>/lamar</code>.</p>
+      <pre><code><span class="cmt"># 1. install Lamar (the thinker)</span>
+/plugin marketplace add henryjrobinson/lamar
+/plugin install lamar</code></pre>
+      <p>When Lamar hands you a <code>prd.json</code>, give it to Ralph (the builder) to run
+        the whole thing locally:</p>
+      <pre><code><span class="cmt"># 2. install the runner once, then point it at the file</span>
+git clone https://github.com/snarktank/ralph
+cp prd.json ralph/prd.json
+cd ralph &amp;&amp; ./ralph.sh --tool claude</code></pre>
+      <p class="cost"><strong>Honest cost of entry:</strong> "no private infrastructure" is
+        true, but it isn't zero-setup. You need the Lamar plugin, a clone of
+        <a href="https://github.com/snarktank/ralph">snarktank/ralph</a> (which needs
+        <code>jq</code>), and the <code>claude</code> CLI. All free; three small installs.</p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap">
+      <p><a href="https://github.com/henryjrobinson/lamar">github.com/henryjrobinson/lamar</a></p>
+      <p class="small">The builder is <a href="https://github.com/snarktank/ralph">snarktank/ralph</a>.
+        Named, with affection, after Lamar Latrelle — <em>Revenge of the Nerds</em> (1984).</p>
+    </div>
+  </footer>
+
+</body>
+</html>
