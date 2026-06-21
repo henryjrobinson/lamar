@@ -56,7 +56,7 @@ when every story passes.
       "description": "As a <user>, I want <x> so that <y>. Touch exactly: <exact file paths>.",
       "acceptanceCriteria": [
         "<concrete, checkable deliverable — never 'works correctly'>",
-        "Typecheck passes"
+        "<the repo's quality gate, e.g. `npx tsc --noEmit`, `npm test`, or a lint>"
       ],
       "priority": 1,
       "passes": false,
@@ -71,9 +71,13 @@ What makes it autonomy-ready (not just valid JSON):
   completable in a single Ralph iteration (one context window). If you can't
   describe the change in 2-3 sentences, split it.
 - **`acceptanceCriteria` carry the concrete pass/fail signal** (your package's
-  Test approach) — never "make it work". Always end every story with
-  `"Typecheck passes"`; add `"Tests pass"` for testable logic; add
-  `"Verify in browser using dev-browser skill"` for UI stories.
+  Test approach) — never "make it work". Always end every story with **the
+  repo's actual quality gate**, named concretely. Use `"Typecheck passes"` only
+  where the repo *has* a typecheck (`npx tsc --noEmit`); otherwise name the real
+  command it runs (`"Tests pass: run \`npm test\`"`, a lint, etc.). Add
+  `"Tests pass"` for testable logic and `"Verify in browser using dev-browser
+  skill"` for UI stories. **Don't hardcode a TypeScript check into a non-TS repo** —
+  match the gate to the project's stack.
 - **Exact file paths** in each `description`; never "the relevant file".
 - **Dependency order** by `priority` — schema/migrations → backend/logic → UI →
   aggregate views; no story depends on a later one.
