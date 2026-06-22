@@ -34,3 +34,27 @@ Maintain and deliver, at the end of any unattended run, a section titled:
 > **Blocked (waiting on you):** …
 
 This ledger is also the teaching feed and, with a team, the audit trail.
+
+## Before you emit — two hard checks
+Run these the moment before you output the package (SKILL.md §6). They are gates,
+not advice: failing one means re-work the package, not ship it.
+
+1. **Register check (non-technical / teach ON).** The package is just the last
+   *consequential* message, so it goes through the same **plain-language pass** as every
+   intake message (`intake.md` §"The plain-language pass"): dispatch the fresh-context
+   subagent on the *drafted user-facing* package, and send what it returns. It strips
+   any token the user cannot weigh — SQL (`COUNT(*)`, `ORDER BY`), API params
+   (`limit` / `offset`), state / variable / function names (`storiesTotalCount`,
+   `stories.map`), bare stack nouns — replacing each with its plain gloss
+   (`package.md` §"Render the package in the user's register") or cutting it. The split:
+   the technical `prd.json` handed to the runner stays technical and does NOT go through
+   the pass; only the summary shown to the *user* does. A non-technical user who cannot
+   read the package back and validate it = failed gate, however correct the spec is.
+
+2. **Stress-test flag floor.** If the posture is Stress-test on a non-trivial spec,
+   "zero flags / fully locked" is itself the failure (`intake.md`). Before emitting,
+   walk the unnamed-input classes the spec left implicit — empty / zero / negative /
+   NaN / non-integer / out-of-range / wrong-type — and for EACH either decide-and-log
+   a trivial default or *flag* a consequential one in the ledger. A clean verdict with
+   an empty "Flagged" list on a non-trivial spec means you rubber-stamped instead of
+   probing — go back and probe before you emit.

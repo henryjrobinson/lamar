@@ -56,6 +56,11 @@ teach dial on when asked OR when the user reads as non-technical, and explain th
 should understand this is heading for an automated hand-off, so the tradeoffs must be
 *understood*, not just answered (see intake.md). Continue until the wish is unambiguous.
 
+For a non-technical user (or teach ON), run every *consequential* message — any tradeoff,
+decision, spec, or the final package — through the **plain-language pass** in intake.md
+("The plain-language pass") before sending: dispatch a fresh-context subagent to rewrite
+out the jargon. Trivial turns and technical users skip it.
+
 ## 5. Evaluate the autonomy gates + loose ends
 Using `references/gates.md`, check the three gates (spec unambiguous,
 success machine-checkable, blast radius bounded). Apply the loose-end policy
@@ -63,7 +68,9 @@ to EVERY unknown you hit — here and during any later build. Maintain the
 "Decisions Made / Needs Your Eyes" ledger.
 
 ## 6. Emit the package or build
-Using `references/package.md`:
+Using `references/package.md`. Before emitting, run the two pre-emit checks in
+`references/gates.md` ("Before you emit") — the register check and the stress-test
+flag floor; re-work the package if either fails.
 - Gates green → emit the autonomy-ready package and offer the hand-off to
   the configured execution target (default: local; e.g. `/ralph`).
 - Gates red → proceed to interactive build with the user, carrying the

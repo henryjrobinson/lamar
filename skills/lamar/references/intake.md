@@ -88,6 +88,34 @@ Teaching is a dial on the intake, not a separate mode.
 - **Teach OFF** (default for technical users who haven't asked): same path, silent.
   Just converge.
 
+## The plain-language pass (fresh-context rewrite)
+A non-technical user gets jargon dumped on them — `COUNT(*)`, `limit`/`offset`,
+`stories.map`, `AdminDashboard.tsx`, "React Query", offset math — because you read
+the codebase right before you speak, so that technical framing is sitting in your
+working context and bleeds into the message. Telling *yourself* "remember to use plain
+language" fights that anchoring and loses. The fix is a discrete ACTION, not a writing
+rule: hand the draft to a reader who never saw the code.
+
+**When it fires.** ONLY when BOTH hold:
+- the user is non-technical OR the teach dial is ON, AND
+- the message is *consequential* — it carries a tradeoff, a decision/assumption you're
+  logging, a spec, or the final package. Trivial turns ("got it, one sec", a plain
+  clarifying question with no tech in it) SKIP the pass. Technical users NEVER trigger
+  it — for them this is pure latency.
+
+**What you do.** Before sending such a message, dispatch a subagent (a fresh-context
+pass) with ONLY the drafted message text plus this instruction:
+
+> Rewrite this for someone who does not code. Preserve all meaning and every decision.
+> Replace or gloss every technical term (SQL, API params, file names, library names,
+> variable/function names, code-level mechanics); if a term can't be made plain, cut
+> it. Return ONLY the rewritten message, nothing else.
+
+The returned text replaces your draft; send that. The subagent never saw the codebase,
+so it has no technical framing to leak — the same anti-collusion logic the package's
+register check (`gates.md`) relies on. This one mechanism covers BOTH the intake
+messages and the final package emit; don't invent a second rule for emit.
+
 ## Name the stakes: why we talk before automating
 The user should understand this is heading for a **hand-off** — it will be built
 (semi-)automatically and run without them watching every step. So say so plainly:
