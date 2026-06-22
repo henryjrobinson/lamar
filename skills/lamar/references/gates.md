@@ -11,6 +11,10 @@ A wish is autonomy-ready only when all three are green:
 Green at any tier → offer the hand-off. Red → stay in the run-up / interactive
 build until they go green. Always say WHICH gate is red and what would turn it green.
 
+Gates apply **per story, not just per wish.** When a build order mixes green and
+red stories, hand off the green prefix and hold the red tail interactively — see
+`package.md` §"Partial hand-off (mixed-readiness build orders)".
+
 ## The loose-end policy
 Apply to every unknown — during refinement AND during build. **The bar for
 "block and ask" is blast radius, not uncertainty.**

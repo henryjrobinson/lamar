@@ -96,6 +96,22 @@ What makes it autonomy-ready (not just valid JSON):
 - **Interactive build:** gates red (fuzzy/novel/exploratory) or judgment-heavy.
 - Tier 0 never hands off — just do it.
 
+### Partial hand-off (mixed-readiness build orders)
+The choice above is NOT all-or-nothing. A single wish often decomposes into some
+gates-green stories and some gates-red (exploratory) ones — e.g. a clean core loop
+plus one "parse messy PDFs / novel integration" step that can't be machine-checked
+yet. Do not collapse that to a single verdict.
+
+- Emit a `prd.json` covering the **green prefix** — the dependency-ordered,
+  independently verifiable stories — and hand THAT to ralph.
+- Carry the red tail as a **Flagged** ledger item to build interactively next.
+- State the split explicitly so the user knows what ralph will and won't touch,
+  and make the green prefix not depend on the held-back red stories.
+
+The failure modes this avoids: (a) refusing to hand off at all because one story is
+red, and (b) cramming the exploratory step into the prd.json to make it "complete"
+— which is how an autonomous runner produces confident garbage.
+
 ## Execution target
 When the gates are green, emit the package, then offer to run it on the repo's
 **configured execution target**, resolved from `.lamar.md` `execution_target`
