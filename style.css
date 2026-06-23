@@ -172,8 +172,49 @@ pre code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; fon
 footer { text-align: center; padding: 48px 0 60px; color: var(--ink-soft); font-size: .95rem; }
 footer .small { margin-top: 8px; font-size: .88rem; }
 
+/* ---- Showcase (Built with Lamar) ---- */
+.showcase { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 28px; align-items: center; }
+.showcase-media {
+  border: 4px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 8px 10px 0 rgba(11, 29, 58, .14);
+  background: #0a0f1a;
+}
+.showcase-media img { display: block; width: 100%; height: auto; }
+.showcase-body h3 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); font-weight: 800; margin-bottom: 10px; }
+.showcase-body p { color: var(--ink-soft); }
+.showcase-body .flow { text-align: left; margin: 16px 0 22px; }
+.showcase-body .btn-row { justify-content: flex-start; }
+
+.statstrip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 34px; }
+.stat {
+  background: var(--paper-2);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 8px 0 rgba(11, 29, 58, .12);
+  padding: 18px 16px;
+  text-align: center;
+}
+.stat .fig { display: block; font-weight: 800; font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.8rem); letter-spacing: -1.5px; line-height: 1; color: var(--ink); }
+.stat .cap { display: block; margin-top: 8px; font-size: .9rem; line-height: 1.3; color: var(--ink-soft); font-weight: 600; }
+.stat-hero { background: var(--accent); border-color: var(--ink); }
+.stat-hero .fig, .stat-hero .cap { color: #fff; }
+
+.compare {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: clamp(1rem, .9rem + .6vw, 1.3rem);
+  line-height: 1.7;
+}
+.compare .then { color: var(--ink-soft); text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: var(--accent); }
+.compare .now { color: var(--ink); }
+
 /* ---- Tablet+ ---- */
 @media (min-width: 720px) {
   .cards { grid-template-columns: repeat(3, 1fr); }
   .story-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; align-items: start; }
+  .showcase { grid-template-columns: 1.05fr .95fr; gap: 40px; }
+  .statstrip { grid-template-columns: repeat(4, 1fr); }
 }
