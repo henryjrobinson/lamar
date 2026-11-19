@@ -47,8 +47,9 @@ few tasks. Tier 2: the full treatment. At any tier the plan keeps its rules, and
 task keeps its `Covers`, `Files`, `Change`, and `Check` lines.
 
 **What this promises, and what it does not.** One hand-off, and a check for every
-task, so the agent can tell whether it finished. It does NOT promise correct code on
-the first pass with no review. Say so if the user asks.
+task, so the agent can tell whether it finished. The agent builds as far as its checks
+pass and stops when it gets stuck. It does NOT promise that everything gets built in
+one pass, or correct code with no review. Say so if the user asks.
 
 ### 1. `<slug>-prd.md` — for the user
 The package fields above, in the user's register (it goes through the plain-language
@@ -122,9 +123,11 @@ What makes the plan ready to hand off (not just well-formatted):
   string-concatenated user input) inside the task descriptions.
 
 ### When the agent stops with checks still failing
-The user sees which tasks passed, which check failed, and where the ticks end. They
-bring the failed tasks back to Lamar (the picture has changed — re-run the gates) or
-fix them with the agent directly.
+A stop is the expected outcome for some runs, not a failed plan. Treat it as normal
+work for the user to finish. The user sees which tasks passed, which check failed, and
+where the ticks end, then finishes the stuck task with the agent directly. Do not
+apologize for the stop or re-plan the whole package. Re-run the gates only if the stop
+showed that an acceptance criterion was wrong.
 
 ## Hand-off vs. interactive build
 - **Hand-off:** gates green AND the work decomposes into independently verifiable

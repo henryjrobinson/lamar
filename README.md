@@ -41,9 +41,10 @@ coding agent reads both, builds one task, runs the check, ticks the box, and mov
 on. No second tool, no servers, no private infrastructure.
 
 **What Lamar promises.** One hand-off, and a check for every task, so the agent can tell
-whether it finished. Lamar does not promise correct code on the first pass with no
-review. If a check keeps failing, the plan tells the agent to stop and report which
-check failed. It must not mark the task done. The ticked boxes show where it stopped.
+whether it finished. Lamar does not promise that everything gets built in one pass.
+The agent builds as far as its checks pass and stops when it gets stuck. It reports
+which check failed, and it must not mark that task done. The ticked boxes show where
+it stopped. Finishing a stuck task with your agent is a normal part of the work.
 
 ## Install
 

@@ -130,8 +130,9 @@
 Read docs/&lt;feature&gt;-prd.md, then carry out docs/&lt;feature&gt;-plan.md.
 Follow the rules at the top of the plan.</code></pre>
       <p class="cost"><strong>Honest promise:</strong> one hand-off, and a check for every
-        task, so the agent can tell whether it finished. Not a promise of correct code on the
-        first pass with no review. Prefer a runner that restarts the agent for each step? The
+        task, so the agent can tell whether it finished. It builds as far as its checks pass and
+        stops when it gets stuck, so you finish that part with it. Not a promise that
+        everything gets built in one pass. Prefer a runner that restarts the agent for each step? The
         <a href="https://github.com/snarktank/ralph">Ralph</a> path still works. Set
         <code>execution_target: ralph</code> in your <code>.lamar.md</code>
         (<a href="https://github.com/henryjrobinson/lamar#optional-build-with-ralph-instead">how</a>).</p>
