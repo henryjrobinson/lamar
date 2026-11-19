@@ -51,8 +51,9 @@ not advice: failing one means re-work the package, not ship it.
    (`limit` / `offset`), state / variable / function names (`storiesTotalCount`,
    `stories.map`), bare stack nouns — replacing each with its plain gloss
    (`package.md` §"Render the package in the user's register") or cutting it. The split:
-   the technical `prd.json` handed to the runner stays technical and does NOT go through
-   the pass; only the summary shown to the *user* does. A non-technical user who cannot
+   the technical implementation plan (or `prd.json`) handed to the coding agent stays
+   technical and does NOT go through the pass; only the PRD and the summary shown to
+   the *user* do. A non-technical user who cannot
    read the package back and validate it = failed gate, however correct the spec is.
 
 2. **Stress-test flag floor.** If the posture is Stress-test on a non-trivial spec,

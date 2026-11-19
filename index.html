@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lamar — designed to work with your thinking style</title>
-  <meta name="description" content="Lamar is an interview-driven spec tool. It shapes the spec around how you think, then hands a build-ready prd.json to the Ralph autonomous runner. They didn't teach Lamar to throw — they built a javelin for how he already threw.">
+  <meta name="description" content="Lamar is an interview-driven spec tool. It shapes the spec around how you think, then writes a build-ready PRD and implementation plan for your coding agent. They didn't teach Lamar to throw — they built a javelin for how he already threw.">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon-512.png">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png">
   <meta property="og:title" content="Lamar — designed to work with your thinking style">
-  <meta property="og:description" content="Fuzzy idea in, built code out. Lamar shapes the spec around how you think, then hands it to Ralph to build.">
+  <meta property="og:description" content="Fuzzy idea in, built code out. Lamar shapes the spec around how you think, then hands it to your coding agent to build.">
   <meta property="og:image" content="assets/brand/repo-card-1280x640.png">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="style.css">
@@ -94,22 +94,22 @@
         </div>
         <div class="card">
           <span class="num">2</span>
-          <h3>Lamar writes the checklist</h3>
-          <p>It writes a <code>prd.json</code>: a checklist of small, independently checkable
-            steps a robot can actually follow.</p>
+          <h3>Lamar writes the plan</h3>
+          <p>It writes a PRD you can read and a plan: a checklist of small, independently
+            checkable tasks a robot can actually follow.</p>
         </div>
         <div class="card">
           <span class="num">3</span>
-          <h3>Ralph builds it</h3>
-          <p><a href="https://github.com/snarktank/ralph">Ralph</a>, a separate open-source
-            runner built by snarktank, takes each step, checks its own work, commits, and ticks
-            it off, until every box is done.</p>
+          <h3>Your coding agent builds it</h3>
+          <p>Hand both files to the coding agent you already use. It takes each task, checks
+            its own work, and ticks it off. If a check keeps failing, it stops and tells
+            you which one.</p>
         </div>
       </div>
       <p class="flow">
         fuzzy idea <span class="arrow">→</span> <code>/lamar</code>
-        <span class="arrow">→</span> <code>prd.json</code>
-        <span class="arrow">→</span> Ralph builds it
+        <span class="arrow">→</span> PRD + plan
+        <span class="arrow">→</span> your agent builds it
       </p>
     </div>
   </section>
@@ -124,16 +124,17 @@
       <pre><code><span class="cmt"># 1. install Lamar (the thinker)</span>
 /plugin marketplace add henryjrobinson/lamar
 /plugin install lamar</code></pre>
-      <p>When Lamar hands you a <code>prd.json</code>, give it to Ralph (the builder) to run
-        the whole thing locally:</p>
-      <pre><code><span class="cmt"># 2. install the runner once, then point it at the file</span>
-git clone https://github.com/snarktank/ralph
-cp prd.json ralph/prd.json
-cd ralph &amp;&amp; ./ralph.sh --tool claude</code></pre>
-      <p class="cost"><strong>Honest cost of entry:</strong> "no private infrastructure" is
-        true, but it isn't zero-setup. You need the Lamar plugin, a clone of
-        <a href="https://github.com/snarktank/ralph">snarktank/ralph</a> (which needs
-        <code>jq</code>), and the <code>claude</code> CLI. All free; three small installs.</p>
+      <p>When Lamar hands you the PRD and the plan, say yes when it offers to start, or give
+        both files to your coding agent (the builder) with one message:</p>
+      <pre><code><span class="cmt"># 2. hand both files to your coding agent</span>
+Read docs/&lt;feature&gt;-prd.md, then carry out docs/&lt;feature&gt;-plan.md.
+Follow the rules at the top of the plan.</code></pre>
+      <p class="cost"><strong>Honest promise:</strong> one hand-off, and a check for every
+        task, so the agent can tell whether it finished. Not a promise of correct code on the
+        first pass with no review. Prefer a runner that restarts the agent for each step? The
+        <a href="https://github.com/snarktank/ralph">Ralph</a> path still works. Set
+        <code>execution_target: ralph</code> in your <code>.lamar.md</code>
+        (<a href="https://github.com/henryjrobinson/lamar#optional-build-with-ralph-instead">how</a>).</p>
     </div>
   </section>
 
@@ -141,7 +142,7 @@ cd ralph &amp;&amp; ./ralph.sh --tool claude</code></pre>
   <footer>
     <div class="wrap">
       <p><a href="https://github.com/henryjrobinson/lamar">github.com/henryjrobinson/lamar</a></p>
-      <p class="small">Lamar is built by Henry Robinson. The runner that builds the specs,
+      <p class="small">Lamar is built by Henry Robinson. The optional runner,
         <a href="https://github.com/snarktank/ralph">Ralph</a>, is a separate open-source
         project by <a href="https://github.com/snarktank/ralph">snarktank</a>. Named after
         Lamar Latrelle in <em>Revenge of the Nerds</em> (1984).</p>

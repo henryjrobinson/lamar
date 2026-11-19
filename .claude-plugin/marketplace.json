@@ -4,15 +4,15 @@
     "name": "henryjrobinson"
   },
   "metadata": {
-    "description": "Lamar — an interview-driven spec tool that shapes the spec around how you think, then hands a build-ready prd.json to the Ralph autonomous runner.",
-    "version": "0.1.0"
+    "description": "Lamar — an interview-driven spec tool that shapes the spec around how you think, then writes a build-ready PRD and implementation plan for your coding agent.",
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "lamar",
       "source": "./",
-      "description": "Adaptive-intake skill: fuzzy wish → autonomy-ready Ralph prd.json.",
-      "version": "0.1.0",
+      "description": "Adaptive-intake skill: fuzzy wish → PRD and implementation plan for any coding agent.",
+      "version": "0.2.0",
       "keywords": ["lamar", "ralph", "prd", "intake", "spec", "automation", "agent", "planning"],
       "category": "productivity",
       "skills": "./skills/"

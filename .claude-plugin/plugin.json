@@ -1,7 +1,7 @@
 {
   "name": "lamar",
-  "version": "0.1.0",
-  "description": "Adaptive-intake skill that turns a fuzzy wish into an autonomy-ready package (a Ralph prd.json) — designed to work with your thinking style.",
+  "version": "0.2.0",
+  "description": "Adaptive-intake skill that turns a fuzzy wish into an autonomy-ready package (a PRD and an implementation plan for any coding agent) — designed to work with your thinking style.",
   "author": {
     "name": "Henry Robinson"
   },

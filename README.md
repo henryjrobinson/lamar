@@ -7,7 +7,7 @@
 > Designed to work with your ~~throwing~~ *thinking* style.
 
 Lamar is an interview-driven spec tool. It talks with you, asks the right questions, and produces a
-build-ready `ralph.md` so the building can be automated — shaping the spec around **how you think**
+build-ready PRD and implementation plan so the building can be automated — shaping the spec around **how you think**
 instead of forcing you into a fixed PRD format. It meets three kinds of people where they are:
 
 - **Knows what they want, but not how to build it** — Lamar draws out the spec in plain terms.
@@ -27,17 +27,23 @@ to it.
 
 ## How it works
 
-Lamar is the **thinker**; [Ralph](https://github.com/snarktank/ralph) is the **builder**.
+Lamar is the **thinker**. Your coding agent is the **builder**.
 
 ```
-/lamar  →  asks the right questions  →  emits a build-ready prd.json
-        →  you hand it to Ralph       →  ./ralph.sh builds it, story by story
+/lamar  →  asks the right questions        →  writes a PRD and an implementation plan
+        →  you hand both to your agent     →  it builds task by task and checks its own work
 ```
 
-Lamar refines your wish until it's unambiguous, then writes a `prd.json` — a checklist
-of small, independently verifiable steps. Ralph reads that checklist, builds the
-highest-priority unfinished step, checks its own work, commits, ticks the box, and
-moves on — until every box is ticked. No servers, no private infrastructure.
+Lamar refines your wish until it's unambiguous, then writes two files. The **PRD** says
+what you are getting, in your own level of language. The **plan** is a checklist of
+small, independently verifiable tasks, each with the check that proves it is done. Your
+coding agent reads both, builds one task, runs the check, ticks the box, and moves
+on. No second tool, no servers, no private infrastructure.
+
+**What Lamar promises.** One hand-off, and a check for every task, so the agent can tell
+whether it finished. Lamar does not promise correct code on the first pass with no
+review. If a check keeps failing, the plan tells the agent to stop and report which
+check failed. It must not mark the task done. The ticked boxes show where it stopped.
 
 ## Install
 
@@ -52,10 +58,26 @@ triggers on "let's build", "add", "fix", "change", …). It sizes the work and, 
 anything beyond a trivial change, runs a short refinement conversation before emitting
 the package.
 
-## Run it (the hand-off to Ralph)
+## Run it (the hand-off)
 
-Lamar emits a `prd.json`. To build it autonomously, install the Ralph runner once and
-point it at the file:
+Lamar writes `<feature>-prd.md` and `<feature>-plan.md` into your `docs/` folder. Say
+yes when Lamar offers to start the plan, or give both files to any coding agent with
+one message:
+
+```
+Read docs/<feature>-prd.md, then carry out docs/<feature>-plan.md.
+Follow the rules at the top of the plan.
+```
+
+If the session ends early, start a new one with the same message. The agent continues
+from the first unticked task.
+
+### Optional: build with Ralph instead
+
+Earlier versions of Lamar wrote a `prd.json` for the
+[Ralph](https://github.com/snarktank/ralph) runner, which restarts a coding agent once
+per story. That path still works. Set `execution_target: ralph` in your `.lamar.md`,
+then:
 
 ```bash
 git clone https://github.com/snarktank/ralph
@@ -63,23 +85,21 @@ cp prd.json ralph/prd.json          # the prd.json Lamar wrote
 cd ralph && ./ralph.sh --tool claude
 ```
 
-**Honest cost of entry.** "No private infrastructure" is true, but it isn't literally
-zero-setup. To run the build loop you need: this Lamar plugin, a clone of
-[snarktank/ralph](https://github.com/snarktank/ralph) (which needs [`jq`](https://jqlang.github.io/jq/)),
-and the [`claude`](https://github.com/anthropics/claude-code) CLI. All free; three small
-installs. Lamar itself only writes the `prd.json` — it never runs the loop for you.
+The Ralph path needs a clone of snarktank/ralph (which needs
+[`jq`](https://jqlang.github.io/jq/)) and the
+[`claude`](https://github.com/anthropics/claude-code) CLI.
 
 ## Configure per repo (optional)
 
 Drop a [`.lamar.md`](.lamar.md.example) in your repo root to set the tier floor, coding
 standards, test expectations, data class, and the execution target. The default target
-is `ralph` (local). See [`.lamar.md.example`](.lamar.md.example).
+is `plan` (the PRD and the plan). See [`.lamar.md.example`](.lamar.md.example).
 
 ## Example
 
 [`examples/pagination/`](examples/pagination/) walks a real fuzzy wish ("the list is
-slow, page through it, newest first") all the way to the `prd.json` Lamar emits and the
-command that builds it.
+slow, page through it, newest first") all the way to the PRD and the plan Lamar writes.
+It also keeps the `prd.json` for the optional Ralph path.
 
 ## Brand assets
 

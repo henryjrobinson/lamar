@@ -15,7 +15,7 @@ tidy specs; you shape the conversation around how they are working right now.
 Tier, gates, postures, and the loose-end policy are your INTERNAL scaffolding —
 not a script to read aloud. Speak to the user in *their* register:
 - **Technical user** → a terse signal is fine ("this is small, I'll just do it";
-  "I'll hand this to /ralph once it's locked").
+  "I'll write the plan for your agent once it's locked").
 - **Non-technical user** → NEVER expose internal labels ("Tier 1"), gate-ceremony
   ("gates green"), or implementation jargon. Translate everything into plain,
   product/user language; reason about tiers and gates silently.
@@ -71,8 +71,10 @@ to EVERY unknown you hit — here and during any later build. Maintain the
 Using `references/package.md`. Before emitting, run the two pre-emit checks in
 `references/gates.md` ("Before you emit") — the register check and the stress-test
 flag floor; re-work the package if either fails.
-- Gates green → emit the autonomy-ready package and offer the hand-off to
-  the configured execution target (default: local; e.g. `/ralph`).
+- Gates green → emit the autonomy-ready package as a PRD plus an implementation
+  plan that any coding agent can take in one hand-off, then offer to start the
+  plan here or leave it for another agent. A repo profile can select a different
+  execution target (e.g. `ralph`, which gets a `prd.json` instead).
 - Gates red → proceed to interactive build with the user, carrying the
   ledger, and re-check the gates as the picture sharpens.
 
@@ -83,7 +85,7 @@ the full treatment.
 - `references/tiers.md` — sizing + dials (§2)
 - `references/intake.md` — adaptive intake (§4)
 - `references/gates.md` — gates + loose-end policy (§5)
-- `references/package.md` — package, ralph-vs-build, `.lamar.md` profile (§1, §6)
+- `references/package.md` — package, PRD + plan format, hand-off-vs-build, optional Ralph target, `.lamar.md` profile (§1, §6)
 - `references/docs.md` — canonical documentation set (per repo)
 - `references/ledger-example.md` — worked return-trip ledger (Decided / Flagged / Blocked)
 - `references/ledger-faq.md` — return-trip ledger FAQ (first-encounter primer)

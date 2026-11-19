@@ -12,17 +12,19 @@ tests: optional     # optional | required-for-logic | required-all
 security_review: tier2   # never | tier2 | any-data-path
 
 # Where an autonomy-ready package runs once the gates are green.
-#   ralph (default) → emit a Ralph prd.json and hand off to the local snarktank/ralph
-#                     runner: `./ralph.sh --tool claude` (see README "Run it").
+#   plan (default)  → write a PRD and an implementation plan into doc_home. You give
+#                     both to any coding agent one time (see README "Run it").
+#   ralph           → emit a Ralph prd.json instead and hand off to the local
+#                     snarktank/ralph runner: `./ralph.sh --tool claude`.
 #   or an object    → { name: <label>, command: <cmd> } for a self-hosted orchestrator
-#                     or cloud agent. The command receives the emitted package / prd.json.
+#                     or cloud agent. The command receives the PRD and plan (or prd.json).
 #                     Keep any URL/token in the command's OWN config, never in this file.
-execution_target: ralph
+execution_target: plan
 
-doc_home: docs/     # where PRDs / hand-off docs live in this repo
+doc_home: docs/     # where the PRD and the plan are written in this repo
 ---
 
 # Notes for this repo (optional, free-form)
 # e.g. "Quality gate is `npm run check`. Migrations use drizzle. UI verified with the
-# dev-browser skill." Ralph reads the quality gate from CLAUDE.md / scripts/ralph/,
-# not from prd.json — state it there.
+# dev-browser skill." Lamar copies the quality gate into the plan. With the ralph
+# target, Ralph reads it from CLAUDE.md / scripts/ralph/ instead — state it there.
