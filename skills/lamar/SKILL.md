@@ -1,6 +1,6 @@
 ---
 name: lamar
-description: Adaptive-intake harness for turning a fuzzy idea into an autonomy-ready package. Use at the START of any non-trivial build, change, or feature request — it sizes the work, runs a refinement conversation fitted to how you're working right now, checks whether the work can be handed off to run unattended, and emits a portable spec/test/decision package (or proceeds to build it with you). Triggers on: "let's build", "I want to", "add", "fix", "change", "make it", or any request to write or modify code.
+description: "Adaptive-intake harness for turning a fuzzy idea into an autonomy-ready package. Use at the START of any non-trivial build, change, or feature request — it sizes the work, runs a refinement conversation fitted to how you're working right now, checks whether the work can be handed off to run unattended, and emits a portable spec/test/decision package (or proceeds to build it with you). Triggers on: \"let's build\", \"I want to\", \"add\", \"fix\", \"change\", \"make it\", or any request to write or modify code."
 ---
 
 # Lamar — design the run-up around the throw
